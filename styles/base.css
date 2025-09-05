@@ -1,0 +1,137 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary: #002b5c;
+  --accent: #ffcc00;
+  --light: #f9f9f9;
+  --dark: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background: #fff;
+  color: var(--dark);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+header .highlight {
+  color: var(--accent);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background: #111;
+  padding: 0.5rem;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Main Layout */
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.card {
+  background: var(--light);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.about img.profile {
+  display: block;
+  max-width: 150px;
+  margin: 0.5rem auto;
+  border-radius: 6px;
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flag {
+  width: 80px;
+  border: 1px solid #ccc;
+}
+
+/* Resources list */
+.resources ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.resources li {
+  margin-bottom: 0.5rem;
+}
+
+.resources a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.resources a:hover {
+  text-decoration: underline;
+  color: var(--accent);
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0.3rem 0;
+}
+
+footer #lastModified {
+  color: var(--accent);
+}
