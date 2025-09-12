@@ -1,0 +1,12 @@
+/* Large screen overrides with Grid */
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    flex:100%;
+    gap: 1rem;
+  }
+
+  figure {
+    margin: 0;
+  }
+}
