@@ -276,3 +276,27 @@ footer p {
     gap: 1rem;
   }
 }
+/* Flex requirement */
+.nav-menu {
+    display: flex;          /* FLEX ✅ */
+    flex-direction: row;    /* explicit */
+    gap: 1rem;
+    list-style: none;
+}
+
+/* Hover requirement */
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+nav a:hover {              /* :hover ✅ */
+    color: yellow;
+    background-color: #34495e;
+}
+nav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
