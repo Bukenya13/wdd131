@@ -269,3 +269,51 @@ footer p {
         grid-template-columns: 1fr; /* One column only */
     }
 }
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+/* Base styles for the temples site */
+
+/* Flexbox for nav */
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease;
+}
+
+/* Hover effect on nav links */
+nav a:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
+
+/* General layout */
+main {
+  padding: 1rem;
+}
+
+/* Basic figure styling */
+figure {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: #555;
+}

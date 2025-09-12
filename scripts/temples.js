@@ -109,3 +109,5 @@ document.addEventListener('DOMContentLoaded', function() {
    8. .scrollIntoView()
       - Smoothly scrolls to show an element on screen
    =============================================== */
+   // temples.js
+console.log("Temples JS loaded successfully.");
