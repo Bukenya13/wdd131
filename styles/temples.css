@@ -300,3 +300,18 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* Normal state */
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* smooth hover */
+}
+
+/* Hover state — pseudo-class */
+nav a:hover {
+    background-color: #34495e; /* darkens background */
+    color: #ffd700;            /* changes text color */
+    transform: scale(1.05);    /* slight zoom effect */
+}
