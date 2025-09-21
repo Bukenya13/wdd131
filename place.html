@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madagascar - The Red Island</title>
+    <meta name="description" content="Discover Madagascar, the unique island nation off the coast of Africa known for its incredible biodiversity and lemurs.">
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Madagascar</h1>
+    </header>
+
+    <main>
+        <!-- Hero Section with overlay cards -->
+        <section class="hero">
+            <img src="images/hero.jpeg" alt="Lemurs in Madagascar">
+            <div class="overlay-card data-card">
+                <h2>Data</h2>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">Area:</span>
+                        <span class="data-value">587,041 sq km</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Population:</span>
+                        <span class="data-value">27,691,018</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Capital:</span>
+                        <span class="data-value">Antananarivo</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Languages:</span>
+                        <span class="data-value">Malagasy, French</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Currency:</span>
+                        <span class="data-value">Malagasy Ariary</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Time Zone:</span>
+                        <span class="data-value">UTC+3</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Calling Code:</span>
+                        <span class="data-value">+261</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Internet TLD:</span>
+                        <span class="data-value">.mg</span>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay-card weather-card">
+                <h2>Weather <span class="weather-icon">⛅</span></h2>
+                <div class="weather-info">
+                    <div class="weather-item">
+                        <span class="weather-label">Temperature:</span>
+                        <span class="weather-value">10 °C</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="weather-label">Conditions:</span>
+                        <span class="weather-value">Partly Cloudy</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="weather-label">Wind:</span>
+                        <span class="weather-value">5 km/h</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="weather-label">Wind Chill:</span>
+                        <span class="weather-value" id="windchill">Calculating...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>About Madagascar</h2>
+            <p>Madagascar, officially the Republic of Madagascar, is an island country in the Indian Ocean, approximately 400 kilometers off the coast of East Africa. It is the world's fourth-largest island and home to 5% of the world's plant and animal species, of which more than 80% are endemic to Madagascar.</p>
+            
+            <p>The island is famous for its unique wildlife, including lemurs, fossas, and numerous bird species found nowhere else on Earth. Madagascar's isolation from the African continent over 160 million years ago has resulted in the evolution of distinct ecosystems and species.</p>
+            
+            <p>The Malagasy culture is a fascinating blend of African, Asian, and European influences, reflected in the island's languages, traditions, and cuisine. The capital city, Antananarivo, sits in the central highlands and serves as the political and economic center of the country.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;2024 <span class="footer-flower">🌸</span> Rubia Magdelena Francesco <span class="footer-flower">🌸</span> Madagascar</p>
+        <p>Last Modification: <span id="lastmodified"></span></p>
+    </footer>
+    <script>
+        // Set current year and last modified
+        document.getElementById('lastmodified').textContent = document.lastModified;
+    </script>
+</body>
+</html>
