@@ -240,3 +240,14 @@ button:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Lora', serif;
+}
+a::after {
+  content: " ↗";
+  color: gray;
+}
