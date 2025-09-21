@@ -9,7 +9,8 @@
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     --border-radius: 8px;
     --max-width: 1200px;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-main: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Lora', serif;
 }
 
 /* Global Styles */
@@ -240,12 +241,11 @@ button:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
-body {
-    font-family: 'Roboto', sans-serif;
-}
 
-h1, h2 {
-    font-family: 'Lora', serif;
+/* Only add external link icon for external links */
+a[href^="http"]:not([href*="yourdomain.com"])::after {
+  content: " ↗";
+  color: gray;
 }
 a::after {
   content: " ↗";
