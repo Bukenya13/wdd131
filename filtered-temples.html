@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta description for SEO / page summary -->
+    <meta name="description" content="Filtered Temple Album - Browse temples by categories including old, new, large, and small temples">
+    
+    <!-- Meta author -->
+    <meta name="author" content="Bukenya Lawrence">
+    
+    <meta charset="UTF-8">
+    <!-- This makes the website work on mobile phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title that shows in the browser tab -->
+    <title>Filtered Temple Album</title>
+    <!-- Link to our CSS file -->
+    <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="stylesheet" href="styles/filtered-temples-large.css" media="screen and (min-width: 768px)">
+    <script src="scripts/filtered-temples.js" defer></script>
+</head>
+<body>
+    <!-- HEADER SECTION - Top part of the website -->
+    <header>
+        <nav>
+            <!-- Website logo/title -->
+            <div class="logo">
+                <h1>⛪ Temple Album</h1>
+            </div>
+             
+            <!-- Hamburger menu button (only shows on mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" data-filter="home">Home</a></li>
+                <li><a href="#" data-filter="old">Old</a></li>
+                <li><a href="#" data-filter="new">New</a></li>
+                <li><a href="#" data-filter="large">Large</a></li>
+                <li><a href="#" data-filter="small">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT - The main part of the website -->
+    <main>
+        <!-- Hero section - The big banner at the top -->
+        <section id="home" class="hero">
+            <h2>Sacred Temples Around the World</h2>
+            <p>Explore beautiful temples of The Church of Jesus Christ of Latter-day Saints from different eras and sizes.</p>
+        </section>
+
+        <!-- Filter status section -->
+        <section class="filter-status">
+            <h3 id="filter-title">All Temples</h3>
+            <p id="temple-count">Showing all temples</p>
+        </section>
+
+        <!-- Gallery section - Where all the temple cards will be dynamically created -->
+        <section id="temple-gallery" class="temple-gallery">
+            <div class="temple-grid" id="temple-grid">
+                <!-- Temple cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER - Bottom part of the website -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Bukenya Lawrence - Temple Album</p>
+        <p>Last updated: <span id="last-modified"></span></p>
+    </footer>
+</body>
+</html>
