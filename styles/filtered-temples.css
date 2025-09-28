@@ -462,3 +462,33 @@ footer p:first-child {
         transition-duration: 0.01ms !important;
     }
 }
+/* Base / body */
+:root {
+  --ui-font: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  --heading-font: "Merriweather", "Times New Roman", serif;
+}
+
+html, body {
+  font-family: var(--ui-font);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+/* Example nav hover you already have */
+nav a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+  transform: translateY(-1px);
+}
