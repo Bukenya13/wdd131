@@ -174,7 +174,7 @@ input[type="radio"]:checked + .star-label {
 
 input[type="submit"] {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    image-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
     color: white;
     padding: 15px 50px;
     border: none;
