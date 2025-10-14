@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Delicious pasta recipes from around the world - easy to make and full of flavor">
+    <title>Pasta Passion - Delicious Homemade Pasta Recipes</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #e74c3c;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+        }
+
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Recipe Filters */
+        .recipe-filters {
+            background-color: #fff;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #filters-heading {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .filter-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .filter-results {
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Recipe Grid */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-content {
+            padding: 1.5rem;
+        }
+
+        .recipe-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .recipe-difficulty, .recipe-time {
+            display: flex;
+            align-items: center;
+        }
+
+        .difficulty-easy {
+            color: #2ecc71;
+        }
+
+        .difficulty-medium {
+            color: #f39c12;
+        }
+
+        .difficulty-hard {
+            color: #e74c3c;
+        }
+
+        .recipe-description {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .recipe-ingredients {
+            margin-bottom: 1rem;
+        }
+
+        .ingredients-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .ingredients-list {
+            list-style-type: none;
+            font-size: 0.9rem;
+        }
+
+        .ingredients-list li {
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .ingredients-list li:before {
+            content: "•";
+            color: #e74c3c;
+            position: absolute;
+            left: 0;
+        }
+
+        .view-recipe-btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .view-recipe-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-content a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Image URL Input */
+        .image-url-section {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .image-url-section h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .url-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .url-input-container input {
+            flex: 1;
+        }
+
+        .add-image-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .add-image-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .category-card h3, .category-card p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-card:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .category-card:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .category-card:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        /* Cuisine Badges */
+        .cuisine-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .recipe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .recipe-detail-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .filter-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .url-input-container {
+                flex-direction: column;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="nav-container">
+                <h1 class="logo">Pasta Passion</h1>
+                <button class="hamburger" aria-expanded="false" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#recipes" class="nav-link">Recipes</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h2 id="hero-heading">Delicious Pasta Recipes</h2>
+                <p>Discover our favorite pasta dishes that are easy to make and full of authentic flavor</p>
+                <button id="exploreBtn" class="cta-button">Explore Recipes</button>
+            </div>
+        </section>
+
+        <section class="recipe-filters" id="recipes" aria-labelledby="filters-heading">
+            <div class="container">
+                <h1 id="filters-heading">All Recipes</h1>
+                <div class="filter-controls">
+                    <div class="form-group">
+                        <label for="searchInput" class="visually-hidden">Search recipes</label>
+                        <input type="text" id="searchInput" placeholder="Search recipes by name or ingredient...">
+                    </div>
+                    <div class="form-group">
+                        <label for="difficultyFilter">Filter by Difficulty</label>
+                        <select id="difficultyFilter">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeFilter">Filter by Prep Time</label>
+                        <select id="timeFilter">
+                            <option value="all">Any Time</option>
+                            <option value="quick">Under 15 mins</option>
+                            <option value="medium">15-30 mins</option>
+                            <option value="long">Over 30 mins</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisineFilter">Filter by Cuisine</label>
+                        <select id="cuisineFilter">
+                            <option value="all">All Cuisines</option>
+                            <option value="italian">Italian</option>
+                            <option value="american">American</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="asian">Asian</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="filterResults" class="filter-results">
+                    <p id="resultsCount">Showing all recipes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="image-url-section">
+            <div class="container">
+                <h3>Add Your Own Recipe Image</h3>
+                <div class="url-input-container">
+                    <input type="text" id="imageUrlInput" placeholder="Paste image URL here...">
+                    <button id="addImageBtn" class="add-image-btn">Add Image</button>
+                </div>
+                <div id="customRecipeContainer" class="recipe-grid">
+                    <!-- Custom recipes with user-added images will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="recipes-heading">
+            <div class="container">
+                <h2 id="recipes-heading" class="visually-hidden">Recipe Collection</h2>
+                <div id="recipeContainer" class="recipe-grid">
+                    <!-- Recipes loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section class="recipe-categories" aria-labelledby="categories-heading">
+            <div class="container">
+                <h2 id="categories-heading">Recipe Categories</h2>
+                <div class="categories">
+                    <div class="category-card">
+                        <h3>Classic Italian</h3>
+                        <p>Traditional pasta dishes straight from Italy</p>
+                    </div>
+                    <div class="category-card">
+                        <h3>Creamy Sauces</h3>
+                        <p>Rich and indulgent pasta recipes</p>
+                    </div>
+                    <div class="category-card">
+                        <h3>Quick & Easy</h3>
+                        <p>Simple pasta dishes for busy weeknights</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalContent">
+                <!-- Recipe details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Pasta Passion. All rights reserved.</p>
+            <p><a href="#">Image References</a> | <a href="#">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Recipe data with properly working Unsplash URLs
+        const recipes = [
+            {
+                id: 1,
+                name: "Classic Spaghetti Carbonara",
+                image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "medium",
+                time: "25 mins",
+                cuisine: "italian",
+                description: "A traditional Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
+                ingredients: ["Spaghetti", "Eggs", "Pecorino Romano cheese", "Pancetta", "Black pepper", "Salt"],
+                instructions: [
+                    "Cook spaghetti according to package instructions.",
+                    "Meanwhile, cook pancetta until crispy.",
+                    "Whisk eggs with grated cheese and black pepper.",
+                    "Drain pasta, reserving some pasta water.",
+                    "Combine hot pasta with egg mixture off heat.",
+                    "Add pancetta and mix well, adding pasta water if needed."
+                ]
+            },
+            {
+                id: 2,
+                name: "Creamy Fettuccine Alfredo",
+                image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "easy",
+                time: "20 mins",
+                cuisine: "italian",
+                description: "Rich and creamy pasta with Parmesan cheese and butter.",
+                ingredients: ["Fettuccine", "Heavy cream", "Butter", "Parmesan cheese", "Nutmeg", "Salt", "Pepper"],
+                instructions: [
+                    "Cook fettuccine until al dente.",
+                    "Melt butter in a large pan.",
+                    "Add cream and simmer gently.",
+                    "Stir in grated Parmesan until melted.",
+                    "Add nutmeg, salt, and pepper.",
+                    "Toss with drained pasta and serve immediately."
+                ]
+            },
+            {
+                id: 3,
+                name: "Pesto Pasta with Cherry Tomatoes",
+                image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "easy",
+                time: "15 mins",
+                cuisine: "italian",
+                description: "Fresh basil pesto with pasta and sweet cherry tomatoes.",
+                ingredients: ["Penne pasta", "Fresh basil", "Pine nuts", "Garlic", "Parmesan cheese", "Olive oil", "Cherry tomatoes"],
+                instructions: [
+                    "Cook pasta according to package instructions.",
+                    "Blend basil, pine nuts, garlic, and Parmesan in a food processor.",
+                    "Slowly add olive oil while blending.",
+                    "Toss cooked pasta with pesto sauce.",
+                    "Add halved cherry tomatoes and serve."
+                ]
+            },
+            {
+                id: 4,
+                name: "Lasagna Bolognese",
+                image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "hard",
+                time: "90 mins",
+                cuisine: "italian",
+                description: "Layered pasta with rich meat sauce, béchamel, and cheese.",
+                ingredients: ["Lasagna sheets", "Ground beef", "Tomato sauce", "Onion", "Carrot", "Celery", "Mozzarella", "Parmesan", "Béchamel sauce"],
+                instructions: [
+                    "Prepare meat sauce by sautéing vegetables and browning meat.",
+                    "Make béchamel sauce with butter, flour, and milk.",
+                    "Layer lasagna sheets with sauces and cheese.",
+                    "Bake until golden and bubbly.",
+                    "Let rest before serving."
+                ]
+            },
+            {
+                id: 5,
+                name: "Macaroni and Cheese",
+                image: "https://images.unsplash.com/photo-1543339313-3151bd56b34f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "easy",
+                time: "35 mins",
+                cuisine: "american",
+                description: "Creamy, cheesy baked pasta comfort food.",
+                ingredients: ["Elbow macaroni", "Cheddar cheese", "Milk", "Butter", "Flour", "Breadcrumbs", "Paprika"],
+                instructions: [
+                    "Cook macaroni according to package instructions.",
+                    "Make cheese sauce with butter, flour, milk, and cheese.",
+                    "Combine macaroni with cheese sauce.",
+                    "Top with breadcrumbs and paprika.",
+                    "Bake until golden brown."
+                ]
+            },
+            {
+                id: 6,
+                name: "Chicken Enchilada Pasta",
+                image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                difficulty: "medium",
+                time: "30 mins",
+                cuisine: "mexican",
+                description: "All the flavors of chicken enchiladas in a creamy pasta dish.",
+                ingredients: ["Penne pasta", "Chicken breast", "Enchilada sauce", "Black beans", "Corn", "Cheddar cheese", "Sour cream"],
+                instructions: [
+                    "Cook pasta according to package instructions.",
+                    "Sauté chicken until cooked through.",
+                    "Add enchilada sauce, beans, and corn.",
+                    "Stir in cooked pasta and sour cream.",
+                    "Top with cheese and bake until melted."
+                ]
+            }
+        ];
+
+        // DOM elements
+        const recipeContainer = document.getElementById('recipeContainer');
+        const searchInput = document.getElementById('searchInput');
+        const difficultyFilter = document.getElementById('difficultyFilter');
+        const timeFilter = document.getElementById('timeFilter');
+        const cuisineFilter = document.getElementById('cuisineFilter');
+        const resultsCount = document.getElementById('resultsCount');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const imageUrlInput = document.getElementById('imageUrlInput');
+        const addImageBtn = document.getElementById('addImageBtn');
+        const customRecipeContainer = document.getElementById('customRecipeContainer');
+        const exploreBtn = document.getElementById('exploreBtn');
+        const recipeModal = document.getElementById('recipeModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.querySelector('.close-modal');
+        const contactForm = document.getElementById('contactForm');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRecipes(recipes);
+            setupEventListeners();
+            loadUserPreferences();
+        });
+
+        // Display recipes in the grid
+        function displayRecipes(recipesToDisplay) {
+            recipeContainer.innerHTML = '';
+            
+            if (recipesToDisplay.length === 0) {
+                recipeContainer.innerHTML = '<p>No recipes found matching your criteria.</p>';
+                return;
+            }
+            
+            recipesToDisplay.forEach(recipe => {
+                const recipeCard = createRecipeCard(recipe);
+                recipeContainer.appendChild(recipeCard);
+            });
+            
+            updateResultsCount(recipesToDisplay.length);
+        }
+
+        // Create a recipe card element
+        function createRecipeCard(recipe) {
+            const card = document.createElement('div');
+            card.className = 'recipe-card';
+            
+            // Difficulty class for styling
+            const difficultyClass = `difficulty-${recipe.difficulty}`;
+            
+            card.innerHTML = `
+                <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image" loading="lazy">
+                <div class="recipe-content">
+                    <div class="recipe-header">
+                        <h3 class="recipe-title">${recipe.name}</h3>
+                        <span class="cuisine-badge">${recipe.cuisine}</span>
+                    </div>
+                    <div class="recipe-meta">
+                        <span class="recipe-difficulty ${difficultyClass}">${recipe.difficulty.charAt(0).toUpperCase() + recipe.difficulty.slice(1)}</span>
+                        <span class="recipe-time">${recipe.time}</span>
+                    </div>
+                    <p class="recipe-description">${recipe.description}</p>
+                    <div class="recipe-ingredients">
+                        <h4 class="ingredients-title">Key Ingredients:</h4>
+                        <ul class="ingredients-list">
+                            ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <button class="view-recipe-btn" data-id="${recipe.id}">View Recipe</button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Filter recipes based on user input
+        function filterRecipes() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const difficultyValue = difficultyFilter.value;
+            const timeValue = timeFilter.value;
+            const cuisineValue = cuisineFilter.value;
+            
+            const filteredRecipes = recipes.filter(recipe => {
+                // Search filter
+                const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) || 
+                    recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm));
+                
+                // Difficulty filter
+                const matchesDifficulty = difficultyValue === 'all' || recipe.difficulty === difficultyValue;
+                
+                // Time filter
+                let matchesTime = true;
+                if (timeValue !== 'all') {
+                    const time = parseInt(recipe.time);
+                    if (timeValue === 'quick') matchesTime = time < 15;
+                    else if (timeValue === 'medium') matchesTime = time >= 15 && time <= 30;
+                    else if (timeValue === 'long') matchesTime = time > 30;
+                }
+                
+                // Cuisine filter
+                const matchesCuisine = cuisineValue === 'all' || recipe.cuisine === cuisineValue;
+                
+                return matchesSearch && matchesDifficulty && matchesTime && matchesCuisine;
+            });
+            
+            displayRecipes(filteredRecipes);
+            saveUserPreferences();
+        }
+
+        // Update results count text
+        function updateResultsCount(count) {
+            const totalRecipes = recipes.length;
+            if (count === totalRecipes) {
+                resultsCount.textContent = `Showing all ${count} recipes`;
+            } else {
+                resultsCount.textContent = `Showing ${count} of ${totalRecipes} recipes`;
+            }
+        }
+
+        // Add custom recipe with user-provided image
+        function addCustomRecipe() {
+            const imageUrl = imageUrlInput.value.trim();
+            
+            if (!imageUrl) {
+                alert('Please enter an image URL');
+                return;
+            }
+            
+            // Validate URL format
+            try {
+                new URL(imageUrl);
+            } catch (e) {
+                alert('Please enter a valid URL');
+                return;
+            }
+            
+            // Create a new recipe object
+            const customRecipe = {
+                id: Date.now(), // Use timestamp as unique ID
+                name: "Your Custom Pasta",
+                image: imageUrl,
+                difficulty: "easy",
+                time: "20 mins",
+                cuisine: "custom",
+                description: "Your delicious custom pasta creation!",
+                ingredients: ["Your choice of pasta", "Your favorite sauce", "Your preferred ingredients"],
+                instructions: ["Prepare your ingredients", "Cook according to your preferences", "Enjoy your creation!"]
+            };
+            
+            // Create and add the recipe card
+            const recipeCard = createRecipeCard(customRecipe);
+            customRecipeContainer.appendChild(recipeCard);
+            
+            // Save to localStorage
+            saveCustomRecipe(customRecipe);
+            
+            // Clear the input
+            imageUrlInput.value = '';
+            
+            // Show success message
+            alert('Your custom recipe has been added!');
+        }
+
+        // Save custom recipe to localStorage
+        function saveCustomRecipe(recipe) {
+            let customRecipes = JSON.parse(localStorage.getItem('customRecipes')) || [];
+            customRecipes.push(recipe);
+            localStorage.setItem('customRecipes', JSON.stringify(customRecipes));
+        }
+
+        // Load custom recipes from localStorage
+        function loadCustomRecipes() {
+            const customRecipes = JSON.parse(localStorage.getItem('customRecipes')) || [];
+            customRecipes.forEach(recipe => {
+                const recipeCard = createRecipeCard(recipe);
+                customRecipeContainer.appendChild(recipeCard);
+            });
+        }
+
+        // Save user preferences to localStorage
+        function saveUserPreferences() {
+            const preferences = {
+                search: searchInput.value,
+                difficulty: difficultyFilter.value,
+                time: timeFilter.value,
+                cuisine: cuisineFilter.value
+            };
+            localStorage.setItem('recipePreferences', JSON.stringify(preferences));
+        }
+
+        // Load user preferences from localStorage
+        function loadUserPreferences() {
+            const preferences = JSON.parse(localStorage.getItem('recipePreferences'));
+            if (preferences) {
+                searchInput.value = preferences.search;
+                difficultyFilter.value = preferences.difficulty;
+                timeFilter.value = preferences.time;
+                cuisineFilter.value = preferences.cuisine;
+                filterRecipes();
+            }
+            
+            // Load custom recipes
+            loadCustomRecipes();
+        }
+
+        // Show recipe details in modal
+        function showRecipeDetails(recipeId) {
+            const recipe = recipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+            
+            modalContent.innerHTML = `
+                <img src="${recipe.image}" alt="${recipe.name}" class="recipe-detail-image">
+                <h2>${recipe.name}</h2>
+                <div class="recipe-meta">
+                    <span class="recipe-difficulty difficulty-${recipe.difficulty}">${recipe.difficulty.charAt(0).toUpperCase() + recipe.difficulty.slice(1)}</span>
+                    <span class="recipe-time">${recipe.time}</span>
+                    <span class="cuisine-badge">${recipe.cuisine}</span>
+                </div>
+                <p class="recipe-description">${recipe.description}</p>
+                <div class="recipe-ingredients">
+                    <h3>Ingredients</h3>
+                    <ul class="ingredients-list">
+                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="recipe-instructions">
+                    <h3>Instructions</h3>
+                    <ol>
+                        ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                    </ol>
+                </div>
+                <button class="view-recipe-btn" onclick="addToGroceryList(${recipeId})">Add to Grocery List</button>
+            `;
+            
+            recipeModal.style.display = 'block';
+        }
+
+        // Add recipe to grocery list
+        function addToGroceryList(recipeId) {
+            const recipe = recipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+            
+            let groceryList = JSON.parse(localStorage.getItem('groceryList')) || [];
+            recipe.ingredients.forEach(ingredient => {
+                if (!groceryList.includes(ingredient)) {
+                    groceryList.push(ingredient);
+                }
+            });
+            
+            localStorage.setItem('groceryList', JSON.stringify(groceryList));
+            alert('Ingredients added to your grocery list!');
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Filter event listeners
+            searchInput.addEventListener('input', filterRecipes);
+            difficultyFilter.addEventListener('change', filterRecipes);
+            timeFilter.addEventListener('change', filterRecipes);
+            cuisineFilter.addEventListener('change', filterRecipes);
+            
+            // Mobile menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Custom image addition
+            addImageBtn.addEventListener('click', addCustomRecipe);
+            
+            // Allow Enter key to add image
+            imageUrlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    addCustomRecipe();
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Explore button
+            exploreBtn.addEventListener('click', () => {
+                document.getElementById('recipes').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+            
+    

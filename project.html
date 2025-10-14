@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover delicious pasta recipes from around the world - easy to make and full of flavor">
+    <title>Pasta Passion - Delicious Homemade Pasta Recipes</title>
+    <link rel="stylesheet" href="/styles/project.css">
+    <link rel="scripts" href="scripts/project.js">
+    <style>
+        /* Additional styles for the trending pasta section */
+        .trending-pasta {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .trending-pasta .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .trending-pasta h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .pasta-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .pasta-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .pasta-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pasta-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .pasta-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem;
+            margin: 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .trending-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .pasta-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="nav-container">
+                <h1 class="logo">Pasta Passion</h1>
+                <button class="hamburger" aria-expanded="false" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="project.html" class="nav-link" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="recipes.html" class="nav-link">Recipes</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Portfolio</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h2 id="hero-heading">Delicious Pasta Recipes</h2>
+                <p>Discover my favorite pasta dishes that are easy to make and full of authentic Italian flavor</p>
+                <button id="exploreBtn" class="cta-button">Explore Recipes</button>
+            </div>
+        </section>
+
+        <section class="featured-recipes" aria-labelledby="featured-heading">
+            <div class="container">
+                <h2 id="featured-heading">Featured Recipes</h2>
+                <div id="featuredContainer" class="recipe-grid">
+                    <!-- Featured recipes with images -->
+                    <div class="recipe-card">
+                        <img src="https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classic Spaghetti Carbonara" loading="lazy">
+                        <div class="recipe-content">
+                            <h3>Classic Spaghetti Carbonara</h3>
+                            <p>Creamy pasta with eggs, cheese, pancetta, and black pepper</p>
+                            <div class="recipe-meta">
+                                <span class="difficulty-easy">Easy</span>
+                                <span class="recipe-time">25 mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recipe-card">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Homemade Pasta Dough" loading="lazy">
+                        <div class="recipe-content">
+                            <h3>Homemade Pasta Dough</h3>
+                            <p>Fresh pasta made from scratch with simple ingredients</p>
+                            <div class="recipe-meta">
+                                <span class="difficulty-medium">Medium</span>
+                                <span class="recipe-time">60 mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recipe-card">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pesto Pasta" loading="lazy">
+                        <div class="recipe-content">
+                            <h3>Fresh Basil Pesto Pasta</h3>
+                            <p>Vibrant pasta with homemade basil pesto sauce</p>
+                            <div class="recipe-meta">
+                                <span class="difficulty-easy">Easy</span>
+                                <span class="recipe-time">20 mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recipe-card">
+                        <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lasagna" loading="lazy">
+                        <div class="recipe-content">
+                            <h3>Traditional Lasagna</h3>
+                            <p>Layered pasta with rich meat sauce and creamy béchamel</p>
+                            <div class="recipe-meta">
+                                <span class="difficulty-hard">Hard</span>
+                                <span class="recipe-time">90 mins</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Trending Pasta Section -->
+        <section class="trending-pasta" aria-labelledby="trending-heading">
+            <div class="container">
+                <h2 id="trending-heading">Trending Pasta Dishes</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">Discover the most popular pasta recipes loved by our community</p>
+                <div class="pasta-gallery">
+                    <div class="pasta-item">
+                        <span class="trending-badge">#1</span>
+                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fettuccine Alfredo" loading="lazy">
+                        <h3 class="pasta-name">Fettuccine Alfredo</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#2</span>
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shrimp Scampi" loading="lazy">
+                        <h3 class="pasta-name">Shrimp Scampi</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#3</span>
+                        <img src="https://images.unsplash.com/photo-1608755729313-7b1bedc6ad5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penne Arrabbiata" loading="lazy">
+                        <h3 class="pasta-name">Penne Arrabbiata</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#4</span>
+                        <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mushroom Risotto" loading="lazy">
+                        <h3 class="pasta-name">Mushroom Risotto</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#5</span>
+                        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lobster Ravioli" loading="lazy">
+                        <h3 class="pasta-name">Lobster Ravioli</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#6</span>
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh Tagliatelle" loading="lazy">
+                        <h3 class="pasta-name">Fresh Tagliatelle</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#7</span>
+                        <img src="https://images.unsplash.com/photo-1608755728486-3b3b5970d3a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cacio e Pepe" loading="lazy">
+                        <h3 class="pasta-name">Cacio e Pepe</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#8</span>
+                        <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bolognese" loading="lazy">
+                        <h3 class="pasta-name">Spaghetti Bolognese</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#9</span>
+                        <img src="https://images.unsplash.com/photo-1608755728596-93b6327e4e1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pasta Primavera" loading="lazy">
+                        <h3 class="pasta-name">Pasta Primavera</h3>
+                    </div>
+                    <div class="pasta-item">
+                        <span class="trending-badge">#10</span>
+                        <img src="https://images.unsplash.com/photo-1551892373-5bdb5a6b69c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mac and Cheese" loading="lazy">
+                        <h3 class="pasta-name">Gourmet Mac & Cheese</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recipe-categories" aria-labelledby="categories-heading">
+            <div class="container">
+                <h2 id="categories-heading">Recipe Categories</h2>
+                <div class="categories">
+                    <div class="category-card">
+                        <h3>Classic Italian</h3>
+                        <p>Traditional pasta dishes straight from Italy</p>
+                    </div>
+                    <div class="category-card">
+                        <h3>Creamy Sauces</h3>
+                        <p>Rich and indulgent pasta recipes</p>
+                    </div>
+                    <div class="category-card">
+                        <h3>Quick & Easy</h3>
+                        <p>Simple pasta dishes for busy weeknights</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="user-preferences" aria-labelledby="preferences-heading">
+            <div class="container">
+                <h2 id="preferences-heading">Your Preferences</h2>
+                <div id="preferencesDisplay">
+                    <!-- User preferences displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Pasta Passion. All rights reserved.</p>
+            <p><a href="reference.html">Image References</a> | <a href="reference.html">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
